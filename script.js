@@ -69,10 +69,12 @@ function pauseProductAutoplay() {
 
 previousButton?.addEventListener("click", () => {
   productViewport.scrollBy({ left: -carouselDistance(), behavior: "smooth" });
+  startProductAutoplay();
 });
 
 nextButton?.addEventListener("click", () => {
   productViewport.scrollBy({ left: carouselDistance(), behavior: "smooth" });
+  startProductAutoplay();
 });
 
 productViewport?.addEventListener("scroll", updateCarouselControls, { passive: true });
@@ -100,9 +102,14 @@ if ("IntersectionObserver" in window && productCarousel) {
 productReduceMotion.addEventListener?.("change", startProductAutoplay);
 
 filters.forEach((button) => {
+  button.setAttribute("aria-pressed", String(button.classList.contains("is-active")));
   button.addEventListener("click", () => {
-    filters.forEach((item) => item.classList.remove("is-active"));
+    filters.forEach((item) => {
+      item.classList.remove("is-active");
+      item.setAttribute("aria-pressed", "false");
+    });
     button.classList.add("is-active");
+    button.setAttribute("aria-pressed", "true");
     const selected = button.dataset.filter;
     let visible = 0;
 

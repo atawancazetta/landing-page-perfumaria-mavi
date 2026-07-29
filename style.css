@@ -630,3 +630,82 @@
   .brand img{transform:scale(1.22)}
   .brand:hover img{transform:scale(1.27)}
 }
+
+/* Responsive layout consolidation
+   These rules intentionally come last so the storefront keeps its visual identity
+   while using predictable phone, tablet and desktop breakpoints. */
+html,body{max-width:100%;overflow-x:clip}
+body{overflow-wrap:break-word}
+img,svg,video{max-width:100%;height:auto}
+.header__inner,.hero__grid,.benefits__grid,.category-grid,.product-grid,
+.consultancy__grid,.about__grid,.instagram__grid,.footer__top{min-width:0}
+.hero__content,.consultancy__content,.about__content,.footer__top>*,.section-heading>*{min-width:0}
+.button,.header__contact{max-width:100%;text-align:center}
+.product-carousel__viewport{overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y}
+.product-card{scroll-snap-stop:always}
+
+/* Tablet: a genuine intermediate composition, with two-column content and cards. */
+@media (min-width:721px) and (max-width:1100px){
+  .container{width:min(calc(100% - 40px),var(--container))}
+  .header__inner{grid-template-columns:76px minmax(0,1fr) auto;min-height:82px}
+  .brand{width:76px;height:76px}.brand img{width:72px;height:72px}
+  .nav{gap:clamp(11px,1.7vw,20px)}.nav a{font-size:9px;letter-spacing:.055em}
+  .header__contact{padding:10px 12px}.header__contact span{display:none}
+  .hero-carousel,.hero-carousel__track{min-height:650px}
+  .hero-slide .hero__grid{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);min-height:650px;padding-block:48px 90px}
+  .hero-slide .hero__content{padding-left:0}
+  .hero-slide h1,.hero-slide h2{font-size:clamp(44px,6.3vw,66px)}
+  .hero-slide .hero__visual{min-height:470px}
+  .hero-slide .hero__image-wrap{width:min(105%,500px)}
+  .hero-carousel__arrows{top:-286px;width:calc(100vw - 20px)}
+  .benefits article{padding:20px 16px}.benefits small{font-size:9px}
+  .section{padding:88px 0}.section-heading{gap:32px}
+  .category-grid{grid-template-columns:1fr 1fr}.category-card{min-height:350px}
+  .category-card--large{grid-row:span 2;min-height:718px}.category-card:last-child{grid-column:auto;min-height:350px}
+  .product-card{flex-basis:calc((100% - 20px)/2)}.product-card__image{height:clamp(320px,45vw,440px)}
+  .consultancy__grid{grid-template-columns:.95fr 1.05fr;min-height:590px}.consultancy__content{padding:64px 0 64px 45px}
+  .about__grid{grid-template-columns:.9fr 1.1fr;gap:44px}.about__visual{min-height:500px}
+  .instagram__grid{grid-template-columns:repeat(2,1fr)}
+  .footer__top{grid-template-columns:1fr 1fr;gap:38px}.footer__brand,.footer__cta{min-height:180px}
+}
+
+@media (max-width:720px){
+  html{scroll-padding-top:86px}
+  .container{width:min(calc(100% - 32px),var(--container))}
+  .header__inner{min-height:70px}.brand{width:66px;height:66px}.brand img{width:64px;height:64px}
+  .nav{top:100px;height:calc(100dvh - 100px);overflow-y:auto;padding:24px 20px 40px}
+  .hero-carousel,.hero-carousel__track{min-height:clamp(860px,220vw,980px)}
+  .hero-slide .hero__grid{min-height:inherit;padding:34px 0 82px;gap:0}
+  .hero-slide .hero__content{padding:0;max-width:none}
+  .hero-slide h1,.hero-slide h2{font-size:clamp(42px,13vw,58px);line-height:.96}
+  .hero-slide .hero__text{margin:18px 0;font-size:13px;line-height:1.65}
+  .hero__actions{gap:14px}.hero__actions .button{width:100%;min-height:48px;padding-inline:16px}.hero__actions .text-link{align-self:center}
+  .hero-slide .hero__trust{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+  .hero-slide .hero__visual{min-height:clamp(330px,96vw,420px)}
+  .hero-slide .hero__image-wrap{width:min(100%,410px)}
+  .hero-carousel__navigation{bottom:18px}.hero-carousel__arrows{top:calc(clamp(860px,220vw,980px)/-2);width:calc(100vw - 16px)}
+  .benefits article{min-width:0;padding:17px 0}.benefits article>span{flex:0 0 30px}
+  .section{padding:64px 0}.section-heading h2,.consultancy h2,.about h2{font-size:clamp(38px,12vw,52px)}
+  .category-card,.category-card:last-child{min-height:clamp(330px,105vw,430px)}.category-card>div{inset:auto 20px 22px}.category-card h3,.category-card--large h3{font-size:34px}
+  .product-toolbar{align-items:center;gap:10px}.filters{max-width:none;min-width:0;flex:1}.product-count{flex:0 0 auto;white-space:nowrap}
+  .product-card{flex-basis:100%}.product-card__image{height:clamp(330px,105vw,460px)}.product-card p{min-height:0}
+  .product-carousel__controls{top:38%;width:calc(100vw - 10px)}
+  .consultancy__visual{height:clamp(300px,88vw,390px)}.consultancy__content{padding:54px 0}.consultancy__content .button{width:100%}
+  .about__visual{min-height:clamp(360px,115vw,480px)}.about__main{right:28px;bottom:36px}.about__logo{width:120px;height:120px}.about__logo img{width:86px}
+  .footer__top{grid-template-columns:1fr 1fr;gap:30px 22px;padding-block:48px}.footer__brand,.footer__cta{grid-column:1/-1}.footer__cta{padding:22px}
+  .footer__bottom{padding-bottom:82px}
+  .whatsapp-float{right:16px;bottom:16px}
+}
+
+@media (max-width:420px){
+  .container{width:min(calc(100% - 24px),var(--container))}
+  .hero-carousel,.hero-carousel__track{min-height:980px}
+  .hero-carousel__arrows{top:-490px}
+  .hero-slide .hero__trust{grid-template-columns:1fr}
+  .filters{margin-right:-6px}.product-count{display:none}
+  .footer__top{grid-template-columns:1fr}.footer__brand,.footer__cta{grid-column:auto}
+}
+
+@media (min-width:1101px){
+  .product-card{flex-basis:calc((100% - 60px)/4)}
+}

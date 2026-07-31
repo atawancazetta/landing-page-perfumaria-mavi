@@ -123,12 +123,14 @@ if ("IntersectionObserver" in window && productCarousel) {
 
 productReduceMotion.addEventListener?.("change", startProductAutoplay);
 
-filters.forEach((button) => {
-  button.addEventListener("click", () => {
-    filters.forEach((item) => item.classList.remove("is-active"));
-    button.classList.add("is-active");
-    const selected = button.dataset.filter;
-    let visible = 0;
+function applyProductFilter(selected) {
+  const activeButton = [...filters].find((button) => button.dataset.filter === selected);
+  filters.forEach((button) => {
+    const active = button === activeButton;
+    button.classList.toggle("is-active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
+  let visible = 0;
 
   products.forEach((product) => {
     const categories = product.dataset.category.split(" ");

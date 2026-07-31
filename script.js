@@ -1,5 +1,12 @@
 const menuButton = document.querySelector(".menu-button");
 const nav = document.querySelector(".nav");
+const header = document.querySelector(".header");
+
+function updateMobileMenuPosition() {
+  if (window.innerWidth > 720 || !header) return;
+  const menuTop = Math.max(0, header.getBoundingClientRect().bottom);
+  document.documentElement.style.setProperty("--mobile-menu-top", `${menuTop}px`);
+}
 
 function closeMenu() {
   nav?.classList.remove("is-open");
@@ -9,6 +16,7 @@ function closeMenu() {
 }
 
 menuButton?.addEventListener("click", () => {
+  updateMobileMenuPosition();
   const open = nav.classList.toggle("is-open");
   document.body.classList.toggle("menu-open", open);
   menuButton.setAttribute("aria-expanded", String(open));
@@ -16,9 +24,23 @@ menuButton?.addEventListener("click", () => {
 });
 
 nav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+nav?.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => {
+    nav.querySelectorAll("a").forEach((item) => {
+      item.classList.remove("is-active");
+      item.removeAttribute("aria-current");
+    });
+    link.classList.add("is-active");
+    link.setAttribute("aria-current", "page");
+  });
+});
 window.addEventListener("resize", () => {
   if (window.innerWidth > 720) closeMenu();
+  else updateMobileMenuPosition();
 });
+window.addEventListener("scroll", () => {
+  if (nav?.classList.contains("is-open")) updateMobileMenuPosition();
+}, { passive: true });
 
 const filters = document.querySelectorAll(".filter");
 const products = document.querySelectorAll(".product-card");
@@ -99,28 +121,38 @@ if ("IntersectionObserver" in window && productCarousel) {
 
 productReduceMotion.addEventListener?.("change", startProductAutoplay);
 
-filters.forEach((button) => {
-  button.addEventListener("click", () => {
-    filters.forEach((item) => item.classList.remove("is-active"));
-    button.classList.add("is-active");
-    const selected = button.dataset.filter;
-    let visible = 0;
-
-    products.forEach((product) => {
-      const categories = product.dataset.category.split(" ");
-      const show = selected === "todos" || categories.includes(selected);
-      product.classList.toggle("is-hidden", !show);
-      if (show) visible += 1;
-    });
-
-    if (productCount) {
-      productCount.textContent = `${visible} ${visible === 1 ? "fragrância" : "fragrâncias"}`;
-    }
-
-    productViewport?.scrollTo({ left: 0, behavior: "smooth" });
-    window.setTimeout(updateCarouselControls, 320);
-    startProductAutoplay();
+function applyProductFilter(selected) {
+  const activeButton = [...filters].find((button) => button.dataset.filter === selected);
+  filters.forEach((button) => {
+    const active = button === activeButton;
+    button.classList.toggle("is-active", active);
+    button.setAttribute("aria-pressed", String(active));
   });
+  let visible = 0;
+
+  products.forEach((product) => {
+    const categories = product.dataset.category.split(" ");
+    const show = selected === "todos" || categories.includes(selected);
+    product.classList.toggle("is-hidden", !show);
+    product.setAttribute("aria-hidden", String(!show));
+    if (show) visible += 1;
+  });
+
+  if (productCount) {
+    productCount.textContent = `${visible} ${visible === 1 ? "fragrância" : "fragrâncias"}`;
+  }
+
+  productViewport?.scrollTo({ left: 0, behavior: "smooth" });
+  window.setTimeout(updateCarouselControls, 320);
+  startProductAutoplay();
+}
+
+filters.forEach((button) => {
+  button.addEventListener("click", () => applyProductFilter(button.dataset.filter));
+});
+
+document.querySelectorAll("[data-product-filter]").forEach((link) => {
+  link.addEventListener("click", () => applyProductFilter(link.dataset.productFilter));
 });
 
 updateCarouselControls();

@@ -28,7 +28,7 @@ Landing page desenvolvida para a **Mavi Perfumaria**, especializada em perfumes 
 - Menu adaptado para dispositivos móveis
 - Animações de entrada durante a navegação
 
-## Destaques do desenvolvimento
+## Principais aspectos do desenvolvimento
 
 - **Responsividade:** interface adaptada para desktop, tablet e dispositivos móveis, com imagens específicas para diferentes tamanhos de tela.
 - **SEO:** metadados descritivos, URL canônica, Open Graph, dados estruturados em JSON-LD, `robots.txt` e `sitemap.xml`.

@@ -10,7 +10,7 @@ Landing page desenvolvida para a **Mavi Perfumaria**, especializada em perfumes 
   </a>
 </p>
 
-## Recursos implementados
+## Recursos Implementados
 
 - **HTML5** — estrutura semântica e acessível
 - **CSS3** — layout responsivo, animações e identidade visual
@@ -18,7 +18,7 @@ Landing page desenvolvida para a **Mavi Perfumaria**, especializada em perfumes 
 - **Google Fonts** — tipografia Cormorant Garamond e Manrope
 - **Vercel** — hospedagem e publicação do projeto
 
-## Funcionalidades principais
+## Funcionalidades Principais
 
 - Carrossel de banners com navegação automática e manual
 - Vitrine de fragrâncias com filtros por categoria
@@ -28,7 +28,7 @@ Landing page desenvolvida para a **Mavi Perfumaria**, especializada em perfumes 
 - Menu adaptado para dispositivos móveis
 - Animações de entrada durante a navegação
 
-## Principais aspectos do desenvolvimento
+## Destaques do Desenvolvimento
 
 - **Responsividade:** interface adaptada para desktop, tablet e dispositivos móveis, com imagens específicas para diferentes tamanhos de tela.
 - **SEO:** metadados descritivos, URL canônica, Open Graph, dados estruturados em JSON-LD, `robots.txt` e `sitemap.xml`.

@@ -10,7 +10,7 @@ Landing page desenvolvida para a **Mavi Perfumaria**, especializada em perfumes 
   </a>
 </p>
 
-## Tecnologias utilizadas
+## Recursos implementados
 
 - **HTML5** — estrutura semântica e acessível
 - **CSS3** — layout responsivo, animações e identidade visual

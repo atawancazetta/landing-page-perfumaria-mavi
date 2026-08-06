@@ -922,7 +922,8 @@ body{
 .hero-carousel--banners,
 .hero-carousel--banners .hero-carousel__track{
   width:100%;
-  height:clamp(520px,43vw,760px);
+  height:calc(100vh - 106px);
+  height:calc(100dvh - 106px);
   min-height:520px;
   aspect-ratio:auto;
   background:var(--forest-deep);

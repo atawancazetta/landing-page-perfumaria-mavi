@@ -993,8 +993,13 @@ body{
   line-height:.94;
 }
 .hero-banner__content h1 em{
-  color:var(--gold);
-  font-weight:400;
+  color:#e9c86c;
+  font-weight:500;
+  text-shadow:0 2px 18px rgba(20,24,17,.45);
+}
+.hero-banner__line{
+  display:block;
+  white-space:nowrap;
 }
 .hero-banner__subtitle{
   max-width:430px;

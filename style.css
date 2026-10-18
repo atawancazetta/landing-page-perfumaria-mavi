@@ -1218,3 +1218,34 @@ body{
   .testimonial-card{transition:none}
   .testimonial-card:hover{transform:none}
 }
+
+/* Responsividade: imagens com texto sem cortes, filtros visíveis e áreas de toque */
+.category-card small{font-size:10px}
+.about__content .text-link{padding-top:14px}
+@media(max-width:1200px){
+  .consultancy__grid{min-height:0;align-items:center}
+  .consultancy__visual{align-self:center;height:auto;aspect-ratio:1/1}
+}
+@media(max-width:1024px){
+  .footer a{display:flex;min-height:40px;align-items:center;margin:0}
+}
+@media(max-width:980px){
+  .about__grid{display:flex;flex-direction:column;align-items:stretch;gap:45px}
+  .about__visual{width:100%;max-width:560px;min-height:0;margin-inline:auto}
+  .about__main{position:relative;inset:auto;margin:0 40px 50px 0;aspect-ratio:1/1}
+}
+@media(max-width:720px){
+  .consultancy__visual{width:calc(100% + 32px);max-width:520px;height:auto;margin:0 -16px}
+  .product-toolbar{overflow:visible}
+  .filters{max-width:100%;flex-wrap:wrap;column-gap:18px;row-gap:0;overflow:visible}
+}
+@media(max-width:980px){
+  .section-heading{display:block}
+  .section-heading>p{max-width:600px;margin-top:14px}
+  .section-heading .button{margin-top:20px}
+}
+@media(max-width:480px){
+  .about__main{margin:0 24px 64px 0}
+  .about__logo{width:100px;height:100px}
+  .about__logo img{width:70px}
+}
